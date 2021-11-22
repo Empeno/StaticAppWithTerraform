@@ -13,7 +13,7 @@ terraform {
 }
 
 resource "azurerm_resource_group" "StaticAppWithTerraform" {
-  name     = "StaticAppWithTerraform"
+  name     = "StaticAppWithTerraform1"
   location = "westeurope"
 }
 
