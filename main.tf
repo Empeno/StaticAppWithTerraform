@@ -12,13 +12,13 @@ terraform {
   }
 }
 
-resource "azurerm_resource_group" "StaticAppWithTerraform" {
-  name     = "StaticAppWithTerraform"
+resource "azurerm_resource_group" "StaticAppWithTerraformRG" {
+  name     = "StaticAppWithTerraformRG"
   location = "westeurope"
 }
 
 resource "azurerm_static_site" "StaticAppWithTerraform" {
   name                = "StaticAppWithTerraform"
-  resource_group_name = "StaticAppWithTerraform"
+  resource_group_name = "StaticAppWithTerraformRG"
   location            = "West Europe"
 }
