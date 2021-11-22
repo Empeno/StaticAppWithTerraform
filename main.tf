@@ -19,6 +19,6 @@ resource "azurerm_resource_group" "StaticAppWithTerraformRG" {
 
 resource "azurerm_static_site" "StaticAppWithTerraform" {
   name                = "StaticAppWithTerraform"
-  resource_group_name = "StaticAppWithTerraformRG"
-  location            = "West Europe"
+  resource_group_name = azurerm_resource_group.StaticAppWithTerraformRG.name
+  location            = azurerm_resource_group.StaticAppWithTerraformRG.location
 }
