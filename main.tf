@@ -5,7 +5,7 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "StaticAppWithTerraform"
+    resource_group_name  = "TerraformState"
     storage_account_name = "dkterraformsa"
     container_name       = "terraform-state"
     key                  = "terraform.tfstate"
