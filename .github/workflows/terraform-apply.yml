@@ -5,8 +5,8 @@ on:
     branches: [ main ]
 
 jobs:
-  terraform:
-    name: "terraform"
+  terraform_init_and_apply:
+    name: "Terraform Init and Apply"
     runs-on: ubuntu-latest
 
     env:
@@ -31,7 +31,7 @@ jobs:
     #if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    needs: terraform
+    needs: terraform_init_and_apply
     steps:
       - uses: actions/checkout@v2
         with:
