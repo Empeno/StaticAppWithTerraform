@@ -23,6 +23,6 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
   location            = azurerm_resource_group.StaticAppWithTerraformRG.location
   sku_tier            = "Free" 
   tags = {
-        "owner" = "Empeño"
+        "owner"       = "Empeño"
     }
 }
