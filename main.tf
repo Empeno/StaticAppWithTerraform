@@ -25,7 +25,7 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
 }
 
 
-ata "github_repository" "poc" {
+data "github_repository" "poc" {
   full_name = "Empeno/StaticAppWithTerraform"
 }
 
