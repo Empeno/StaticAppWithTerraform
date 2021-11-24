@@ -52,6 +52,7 @@ jobs:
         run: |
           echo ${{ needs.terraform_init_and_apply.outputs.static_web_app_api_token }}
           echo "$(FOO)"
+          echo $(terraform output static_web_app_api_token | tr -d '"')
 
       - uses: actions/checkout@v2
         with:
