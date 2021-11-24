@@ -35,10 +35,10 @@ jobs:
       - name: Terraform output
         id: tfoutput
         run: |
-          $ echo "Learn bash programming from LinuxHint.com"
+          echo "Learn bash programming from LinuxHint.com"
           my_static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
           echo $my_static_web_app_api_token
-          $ echo "DONE DONE DONE"
+          echo "DONE DONE DONE"
 
       
       - name: Build And Deploy
