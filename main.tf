@@ -25,6 +25,6 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
 }
 
 output "static_web_app_api_token" {
-  value       = azurerm_static_site.StaticAppWithTerraform.Id
+  value       = azurerm_static_site.StaticAppWithTerraform.id
   description = "The api token of the static web app."
 }
