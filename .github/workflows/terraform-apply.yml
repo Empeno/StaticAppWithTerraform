@@ -7,6 +7,11 @@ on:
 jobs:
   terraform_init_and_apply:
     name: "Terraform Init and Apply"
+
+    defaults:
+      run:
+        shell: bash
+
     runs-on: ubuntu-latest
 
     env:
