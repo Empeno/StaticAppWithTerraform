@@ -24,14 +24,13 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
   sku_tier            = "Free"
 }
 
+resource "azurerm_resource_group" "rg" {
+   name     = var.resource_group_name
+   location = "westus2"
 
-data "github_repository" "poc" {
-  full_name = "Empeno/StaticAppWithTerraform"
+   tags = {
+     Environment = "Terraform Getting Started"
+     Team        = "DevOps"
+  }
 }
 
-// Create secrets in a single poc repo
-resource "github_actions_secret" "my_secret" {
-  repository      = data.github_repository.poc.name
-  secret_name     = "SECRET_KEY"
-  plaintext_value = "123"
-}
