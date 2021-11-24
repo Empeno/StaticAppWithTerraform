@@ -35,15 +35,17 @@ jobs:
       - name: Terraform output
         id: tfoutput
         run: |
-          static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
-          echo "::set-output name=static_web_app_api_token::$static_web_app_api_token"
-          echo $static_web_app_api_token
+          $ echo "Learn bash programming from LinuxHint.com"
+          my_static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
+          echo $my_static_web_app_api_token
+          $ echo "DONE DONE DONE"
+
       
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1        
         with:
-          azure_static_web_apps_api_token: $(terraform output static_web_app_api_token | tr -d '"') # ${{ secrets.AZURE_STATIC_WEB_APP_DEPLOYMENT_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APP_DEPLOYMENT_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
