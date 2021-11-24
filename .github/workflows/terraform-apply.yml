@@ -30,7 +30,7 @@ jobs:
       - name: Terraform output
         id: tfoutput
         run: |
-          static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
+          static_web_app_api_token=$(terraform output static_web_app_api_token)
 
           echo "::set-output name=static_web_app_api_token::$static_web_app_api_token
   
