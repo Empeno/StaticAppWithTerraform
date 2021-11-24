@@ -25,14 +25,13 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
 }
 
 
-resource "github_actions_secret" "example_secret1" {
-  repository       = "Empeno/StaticAppWithTerraform"
-  secret_name      = "example_secret_name1"
-  plaintext_value  = "Bent Butg"
+ata "github_repository" "poc" {
+  full_name = "Empeno/StaticAppWithTerraform"
 }
 
-resource "github_actions_secret" "example_secret2" {
-  repository       = "Empeno/StaticAppWithTerraform"
-  secret_name      = "example_secret_name2"
-  encrypted_value  = "Keld H"
+// Create secrets in a single poc repo
+resource "github_actions_secret" "my_secret" {
+  repository      = data.github_repository.poc.name
+  secret_name     = "SECRET_KEY"
+  plaintext_value = "123"
 }
