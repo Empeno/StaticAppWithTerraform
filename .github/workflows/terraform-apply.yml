@@ -48,9 +48,10 @@ jobs:
     needs: terraform_init_and_apply
     steps:  
       - name: Terraform output
-        id: tfoutput
+        id: tfoutput2
         run: |
           echo ${{ needs.terraform_init_and_apply.outputs.static_web_app_api_token }}
+          echo "$(FOO)"
 
       - uses: actions/checkout@v2
         with:
