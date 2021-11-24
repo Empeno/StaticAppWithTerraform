@@ -23,3 +23,20 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
   location            = azurerm_resource_group.StaticAppWithTerraformRG.location
   sku_tier            = "Free"
 }
+
+
+data "github_actions_public_key" "example_public_key" {
+  repository = "Empeno/StaticAppWithTerraform"
+}
+
+resource "github_actions_secret" "example_secret1" {
+  repository       = "Empeno/StaticAppWithTerraform"
+  secret_name      = "example_secret_name1"
+  plaintext_value  = "Bent Butg"
+}
+
+resource "github_actions_secret" "example_secret2" {
+  repository       = "Empeno/StaticAppWithTerraform"
+  secret_name      = "example_secret_name2"
+  encrypted_value  = "Keld H"
+}
