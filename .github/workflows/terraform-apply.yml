@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "Learn bash programming from LinuxHint.com"
           my_static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
-          echo $my_static_web_app_api_token
+          echo "$my_static_web_app_api_token"
           echo "DONE DONE DONE"
 
       
