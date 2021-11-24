@@ -46,15 +46,18 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     needs: terraform_init_and_apply
-    steps:        
+    steps:  
+      - name: Terraform output
+        id: tfoutput
+        run: |
+          echo ${{ needs.terraform_init_and_apply.outputs.static_web_app_api_token }}
+
       - uses: actions/checkout@v2
         with:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v1
-        run: |
-          echo ${{ needs.terraform_init_and_apply.outputs.static_web_app_api_token }}
+        uses: Azure/static-web-apps-deploy@v1        
         with:
           azure_static_web_apps_api_token: ${{ needs.terraform_init_and_apply.outputs.static_web_app_api_token }} # ${{ secrets.AZURE_STATIC_WEB_APP_DEPLOYMENT_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
