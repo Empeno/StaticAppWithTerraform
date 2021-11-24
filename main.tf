@@ -25,10 +25,6 @@ resource "azurerm_static_site" "StaticAppWithTerraform" {
 }
 
 
-data "github_actions_public_key" "example_public_key" {
-  repository = "Empeno/StaticAppWithTerraform"
-}
-
 resource "github_actions_secret" "example_secret1" {
   repository       = "Empeno/StaticAppWithTerraform"
   secret_name      = "example_secret_name1"
