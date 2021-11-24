@@ -47,7 +47,7 @@ jobs:
     name: Build and Deploy Job
     needs: terraform_init_and_apply
     steps:
-      run:
+      - bash: |
           echo ${{ needs.terraform_init_and_apply.outputs.static_web_app_api_token }}
       - uses: actions/checkout@v2
         with:
