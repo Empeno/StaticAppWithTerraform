@@ -51,8 +51,7 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1        
         with:         
-          with:
-            terraform_wrapper: false 
+          terraform_wrapper: false 
           azure_static_web_apps_api_token: "$(terraform output static_web_app_api_token)" 
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
