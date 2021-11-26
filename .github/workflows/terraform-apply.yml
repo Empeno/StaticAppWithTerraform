@@ -19,7 +19,6 @@ jobs:
       ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.TF_ARM_SUBSCRIPTION_ID}}
       ARM_TENANT_ID: ${{secrets.TF_ARM_TENANT_ID}}
-      DEPLOYMENT_TOKEN: $(terraform output static_web_app_api_token | tr -d '"')
 
     steps:
       - uses: actions/checkout@v2
@@ -32,20 +31,6 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-      
-      - name: Terraform output
-        id: tfoutput
-        run: |
-          echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
-          DEPLOYMENT_TOKEN: $(terraform output static_web_app_api_token | tr -d '"')
-          echo $env.DEPLOYMENT_TOKEN
-          echo "Learn bash programming from LinuxHint.com"
-          my_static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
-          echo "$my_static_web_app_api_token"
-          echo "DONE DONE DONE"
-          echo ${{ env.DEPLOYMENT_TOKEN }}
-          echo "Heick"
-
       
       - name: Build And Deploy
         id: builddeploy
