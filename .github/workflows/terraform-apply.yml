@@ -40,6 +40,8 @@ jobs:
           my_static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
           echo "$my_static_web_app_api_token"
           echo "DONE DONE DONE"
+          echo ${{ env.DEPLOYMENT_TOKEN }}
+          echo "Heick"
 
       
       - name: Build And Deploy
