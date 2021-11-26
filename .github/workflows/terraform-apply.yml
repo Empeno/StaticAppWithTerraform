@@ -33,12 +33,18 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+
+      - name: Terraform Output
+        id: tfoutput
+        run: |
+          deployment_token=$(terraform output deployment_token | tr -d '"')
+          echo "::set-output name=deployment_token::$deployment_token"
       
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1        
         with:         
-          azure_static_web_apps_api_token: $(terraform output static_web_app_api_token)
+          azure_static_web_apps_api_token: ${{ steps.tfoutput.outputs.deployment_token }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
