@@ -32,7 +32,13 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve      
+        run: terraform apply -auto-approve
+
+      - name: Terraform Output
+        id: tfoutput
+        run: |
+          static_web_app_api_token=$(terraform output static_web_app_api_token | tr -d '"')
+          echo "::set-output name=static_web_app_api_token::$static_web_app_api_token"
       
       - name: Build And Deploy
         id: builddeploy
